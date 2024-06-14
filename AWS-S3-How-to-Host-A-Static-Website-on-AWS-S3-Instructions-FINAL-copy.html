@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+     <meta charset="UTF-8">
+     <meta name="description" content="This is how to host a static website on Amazon Web Services AWS S3">
+     <!--keep description under 200 characters.some searches will penalize me for overdoing it here - - -keep it brief-->
+     <title>AWS S3 - How to host a static site on AWS S3</title>
+     <!--Title tags specify the name of the webpage, and whatever is in here will show up in the tab of the page.title tags hold text. -->
+     <meta name="keywords"
+          content="AWS, S3, Chris Colby van Scyoc, tech pages, how to host a website, how to, host website">
+     <meta name="author" content="Chris Colby van Scyoc">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3689162469144098"
+          crossorigin="anonymous"></script>
+</head>
+
+
+<body>
+     <main class="container">
+          <h1>Chris Code n Stuff</h1>
+          <!-- <p>Tech Reminders or Tech How To</p> -->
+           <p>How to Tech Reminders</p>
+
+          <!-- <h1>How to Host a Static Website on Amazon Web Services - AWS S3
+               <h2>
+                    <h3>This series is called "I Forgot! or ... Why Can't I Remember This?</h3>
+               </h2>
+          </h1> -->
+
+          <h2>How to Host a Static Website on Amazon Web Services - AWS S3</h2>
+          <article>
+               <!-- Sometimes I forget how to do a particular step in a process. So, I make notes for myself (and you, too). -->
+               <!-- <section>
+                   Section 1 - Here are my step by step notes for Hosting a Static Website on AWS S3.
+                   <aside>
+                        Aside - Use the ASIDE tag for any content not directly related to on the page - like advertisements - like google adsense and use the aside tag to define this - this content is getting is getting shown to the user but not core content
+                   </aside>
+              </section> -->
+               <!-- <br> -->
+
+
+               <section>
+                    <ol type="1">
+                         <li><strong>Excellent Resources</strong> - Open these and reference them if you wish. They
+                              really helped me!<br>
+                              <a href="https://www.freecodecamp.org/news/a-beginners-guide-on-how-to-host-a-static-site-with-aws/"
+                                   target="_blank" rel="noopener noreferrer">How to Host your Static Website with AWS -
+                                   A Beginner's Guide</a>
+                              <br>
+                              <a href="https://victoria.dev/blog/hosting-your-static-site-with-aws-s3-route-53-and-cloudfront/"
+                                   target="_blank" rel="noopener noreferrer">Hosting your static site with AWS S3, Route
+                                   53, and CloudFront</a>
+                              <br>
+                         </li>
+                         <li>Open this, too! It's a good idea to work alongside the Amazon Documents in the event of
+                              updates. <a
+                                   href="https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/getting-started-s3.html#getting-started-prerequisites"
+                                   target="_blank" rel="noopener noreferrer">THE OFFICIAL STEPS FROM AMAZON</a></li>
+                         <li>
+                              <h4>LET'S GET STARTED!</h4>
+                         </li>
+                         <li>Go to <a href="https://aws.amazon.com" target="_blank" rel="noopener noreferrer">AWS
+                                   (https://aws.amazon.com)</a> - Sign In to the Console</li>
+                         <li>Click Services</li>
+                         <li>Click S3</li>
+                         <li>Click Create Bucket</li>
+                         <li>In “Bucket name” text field - Name the Bucket - <strong>NOTE</strong>: (no spaces, only
+                              valid characters - no ".com"
+                              necessary) - AWS provides a link underneath for “Rules for bucket naming” - Do not include
+                              dots in the name!</li>
+                         <li>AWS Region - Choose Region - <strong>NOTE</strong>: for me, this is “US East (N. Virginia)
+                              us-east-1”. The bucket's Region
+                              may be pre-selected above Bucket Name text field....mine was the most recent time I did
+                              this.</li>
+                         <li>Scroll to bottom - Click Create Bucket</li>
+                         <li>Click on the newly created bucket</li>
+                         <li>See tabs across the top</li>
+                         <li>Next, upload my website files to my new bucket by clicking Upload button</li>
+                         <li><strong>NOTE</strong>I choose to drag and drop. I did not move JOJ master folder over,
+                              rather, open the folder on my desktop,
+                              select and drag all the folders and files from within my Master Folder and drag them into
+                              the AWS upload box.
+                              Ex. go to my JOJ master folder, open it and select all the individual files
+                              and folder inside the joj master folder and drag all the individual folders and files into
+                              S3 Upload area.</li>
+                         <li>Click the Upload button</li>
+                         <li>After upload completes - get green Upload Succeeded!</li>
+                         <li>Single click on index.html file - Now taken to a new tab - will see owner, last modified,
+                              size, key. Can also - if lots of files and folders to fit on one page - maybe this is
+                              better:
+                              under “Files and folders” click on the file
+                              under the Name tab - - in search field “Find by name” - can input either index or the page
+                              I'd like to see.</li>
+                         <li><strong>NOTE</strong>: the OBJECT URL (inside the properties tag in the Object Overview
+                              box) - this
+                              represents the file inside AWS - and can be used for public access - but, just because AWS
+                              creates this file usable for public access does not mean that the html file / this link is
+                              accessible</li>
+                         <li>TRY opening the Object URL link in another tab - will get error - XML file does not appear
+                              to have any style info. Code Access Denied, Message Access Denied, etc. This means
+                              that the file is not made public (yet) - I don not have the proper public permissions yet
+                         </li>
+                         <li>Go back to Object Overview tab - In the same index.html overview tab, click the Open
+                              button. Now
+                              I can see the file contents. <strong>NOTE</strong>: the website won’t show up as finished
+                              product - only
+                              the html shows up - the skeleton - latest-my photos didn't show up. Example, click any
+                              link and I get the XML error / Access
+                              Denied message. Simply uploading all of our files does not mean our website is going to
+                              work.
+                              We need to complete more steps. In the above steps, I created my bucket and uploaded my
+                              files.</li>
+                         <li>
+                              <h4>Next Part - configure my bucket to host my static website.</h4>
+                         </li>
+                         <li>Navigate to AWS S3 - Top Left: Click Services (make sure I'm still logged in)</li>
+                         <li>Click S3</li>
+                         <li>Click on my bucket</li>
+                         <li>Select PROPERTIES tab</li>
+                         <li>Scroll down - In STATIC WEBSITE HOSTING area Click Edit button - This is the configuration
+                              I need to set to enable my bucket to host my website</li>
+                         <li>Under “Static website hosting” Select ENABLE (Radio Button) / more info appears</li>
+                         <li>Select - Enable - under static website hosting</li>
+                         <li>More options present themselves — go to index document text box and type in index.html - to
+                              denote that this is the document I want displayed when someone types in my url - this is
+                              my main homepage</li>
+                         <li>Optional - enter in the error.html document - the document that gets displayed when a user
+                              tries to access pages that are not available - can make this page really cool - either
+                              way, enter an html document here - with directions and a link back to the homepage. Note -
+                              this is
+                              the page with the redirection rules and notes. Optional, but considerate. It's good form.
+                         </li>
+                         <li>Click Save Changes button - I got a green note and check mark - “Successfully edited static
+                              website hosting” message in green bar up top</li>
+                         <li>Doublecheck that the static website hosting is enabled - scroll down on the properties
+                              tab/page - it should have some info in it now - remeber to copy the http link created for
+                              my site</li>
+                         <li>Above, we generated an endpoint URL - and configured my error page
+                              <strong>NOTE</strong>: my endpoint url - it looks something like this:
+                              http://MY-BUCKET-NAME.s3-website-us-east-1.amazonaws.com
+                              Note - when I tried to open this, I got the 403 Forbidden message. Access denied - -
+                              This is normal, see below…
+                         </li>
+                         <li>
+                              <h4>Next Part - configure security and Permissions - to make my site public for users on
+                                   the
+                                   internet</h4>
+                         </li>
+                         <li>Navigate back to AWS S3 - Top Left: Click Services (make sure I'm still logged in)</li>
+                         <li>Click S3</li>
+                         <li>Click on my bucket</li>
+                         <li><strong>NOTE</strong>: by default s3 objects are not made public even when bucket hosting
+                              is enabled. Even
+                              if an endpoint is configured, still no go!!! - trying it gives us an hsttp 403 error -
+                              access denied - go ahead - paste my endpoint url and will get 403 forbidden. To remedy
+                              this, need to perform 2 actions in my bucket:
+                              1 - Need to unblock public access to my bucket, AND 2 - make my website files public</li>
+
+                         <li>Goto AWS console - click services - Storage-S3</li>
+                         <li>Click on the bucket I want to open configuration tabs</li>
+                         <li>Click on PERMISSIONS TAB</li>
+                         <li>Click on EDIT under Block public access (bucket settings)</li>
+                         <li>UNCHECK box “Block all public access”</li>
+                         <li>Doublecheck that all other checkboxes in this section are unchecked</li>
+                         <li>Click SAVE CHANGES button - Caution box appears</li>
+                         <li>Type in “confirm” in the caution box</li>
+                         <li>Click Confirm Button</li>
+                         <li>Click on Objects tab</li>
+                         <li>Click the REFRESH ICON - the circle with the arrow pointer right/clockwise</li>
+                         <li>
+                              <h4>DO THE EDIT BUCKET POLICY NOW</h4>
+                         </li>
+                         <li>Select Permissions tab</li>
+                         <li>Click Edit Button in Bucket policy section</li>
+                         <li>Paste THIS code in the text field under “Policy:”</li>
+                         <li>
+                              <pre>{
+                              "Version":"2012-10-17",
+                              "Statement":[
+                                {
+                                  "Sid":"PublicReadGetObject",
+                                  "Effect":"Allow",
+                                  "Principal": "*",
+                                  "Action":["s3:GetObject"],
+                                  "Resource":["arn:aws:s3:::your-bucket-name/*"]
+                                }
+                              ]
+                            }</pre>
+                         </li>
+                         <li>Above - where it says “your-bucket-name” = put in your bucket name!!!!! And Keep the /*
+                         </li>
+                         <li>Click Save changes button</li>
+                         <li>OK - go try the site</li>
+                         <li>Services > S3 > Select Bucket > Click refresh button > Properties tab > scroll to Static
+                              website hosting >
+                              click the link - opens in a new tab</li>
+                         <li>Check your work! </li>
+                         <li>Start debugging!</li>
+                    </ol>
+
+
+                         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+                              integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+                              crossorigin="anonymous"></script>
+
+
+                         <a href="#top">Back to top</a>
+               </section>
+          </article>
+     </main>
+</body>
+
+</html>
